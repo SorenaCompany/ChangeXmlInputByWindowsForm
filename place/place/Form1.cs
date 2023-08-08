@@ -48,9 +48,17 @@ namespace place
             }
 
             dataGridView1.DataSource = dt;
+
+            // Set the AutoSizeMode property of each column to AllCells
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             #endregion
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void btnShowDetails_Click(object sender, EventArgs e)
         {
             EditForm editForm = new EditForm(xmlDoc);
             editForm.FormClosed += EditForm_FormClosed;
@@ -123,10 +131,6 @@ namespace place
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
         private void btnEditRow_Click(object sender, EventArgs e)
         {
 
@@ -159,5 +163,7 @@ namespace place
         {
             changeddataGridView = (DataGridView)sender;
         }
+
+        
     }
 }
