@@ -22,6 +22,9 @@ namespace place
         public FrmMain()
         {
             InitializeComponent();
+            btnEdit.Enabled = false;
+            btnSave.Enabled = false;
+            btnShowDetails.Enabled = false;
         }
 
         private void loadXml()
@@ -126,6 +129,10 @@ namespace place
                 // Load the XML file using the selected file path
                 xmlDoc.Load(filePath);
                 loadXml();
+
+                btnEdit.Enabled = true;
+                btnShowDetails.Enabled = true;
+                btnSave.Enabled = true;
                 // Process the XML file as needed
                 // ...
             }
