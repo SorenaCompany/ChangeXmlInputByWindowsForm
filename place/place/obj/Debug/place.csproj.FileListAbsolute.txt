@@ -34,3 +34,15 @@ F:\Music\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.Properties.Reso
 F:\Music\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.csproj.GenerateResource.Cache
 F:\Music\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.exe
 F:\Music\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.pdb
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\bin\Debug\place.exe.config
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.exe
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.pdb
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\bin\Debug\place.exe
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\bin\Debug\place.pdb
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.csprojResolveAssemblyReference.cache
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.EditForm.resources
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.EditSelectedRow.resources
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.EditVoranmeldungen.resources
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.FrmMain.resources
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.Properties.Resources.resources
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.csproj.GenerateResource.Cache

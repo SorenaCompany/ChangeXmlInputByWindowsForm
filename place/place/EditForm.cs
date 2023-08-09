@@ -58,6 +58,7 @@ namespace place
                 dataGridView.Location = new System.Drawing.Point(0, 0);
                 dataGridView.Name = $"dataGridView{j}";
                 dataGridView.SelectionChanged += DataGridView_SelectionChanged;
+                dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView.AllowUserToAddRows = false;
                 dataGridView.Dock = DockStyle.Fill;
                 dataGridView.ReadOnly = true;
@@ -70,8 +71,9 @@ namespace place
                 tabPage.Padding = new System.Windows.Forms.Padding(3);
                 tabPage.Size = new System.Drawing.Size(514, 246);
                 tabPage.TabIndex = j;
-                tabPage.Text = $"tabpage{j}";
                 tabPage.UseVisualStyleBackColor = true;
+                tabPage.Dock = DockStyle.Fill;
+                tabControl1.Dock = DockStyle.Fill;
                 tabControl1.TabPages.Add(tabPage);
 
                 // Create a DataTable object for the current DataGridView control
@@ -87,6 +89,8 @@ namespace place
                 // Fill the DataTable with data for the current tab page
                 foreach (XmlNode teamNode in DisziplinsLists[j])
                 {
+                    tabPage.Text = String.Format("Voranmeldungen {0}", teamNode.ParentNode.ParentNode.Attributes["BezeichnungLang"].Value);
+
                     DataRow newRow = dt.NewRow();
                     newRow["Pos"] = teamNode.Attributes["TeamNr"].Value;
                     newRow["Disziplin"] = teamNode.ParentNode.ParentNode.Attributes["BezeichnungLang"].Value;

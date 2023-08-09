@@ -53,12 +53,7 @@ namespace place
             dataGridView1.DataSource = dt;
 
             // Set the AutoSizeMode property of each column to AllCells
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            }
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+          
             #endregion
         }
         private void btnShowDetails_Click(object sender, EventArgs e)
