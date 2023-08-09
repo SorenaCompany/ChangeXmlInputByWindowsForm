@@ -40,9 +40,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(140, 176);
+            this.btnExit.Location = new System.Drawing.Point(105, 143);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(113, 45);
+            this.btnExit.Size = new System.Drawing.Size(85, 37);
             this.btnExit.TabIndex = 19;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(21, 176);
+            this.btnSave.Location = new System.Drawing.Point(16, 143);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 45);
+            this.btnSave.Size = new System.Drawing.Size(85, 37);
             this.btnSave.TabIndex = 18;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -60,61 +62,67 @@
             // 
             // txtOrt
             // 
-            this.txtOrt.Location = new System.Drawing.Point(152, 128);
+            this.txtOrt.Location = new System.Drawing.Point(114, 104);
+            this.txtOrt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtOrt.Name = "txtOrt";
-            this.txtOrt.Size = new System.Drawing.Size(200, 22);
+            this.txtOrt.Size = new System.Drawing.Size(151, 20);
             this.txtOrt.TabIndex = 15;
             // 
             // lblOrt
             // 
             this.lblOrt.AutoSize = true;
             this.lblOrt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrt.Location = new System.Drawing.Point(12, 121);
+            this.lblOrt.Location = new System.Drawing.Point(9, 98);
+            this.lblOrt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOrt.Name = "lblOrt";
-            this.lblOrt.Size = new System.Drawing.Size(56, 29);
+            this.lblOrt.Size = new System.Drawing.Size(44, 24);
             this.lblOrt.TabIndex = 14;
             this.lblOrt.Text = "Ort:";
             this.lblOrt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtTurnier
             // 
-            this.txtTurnier.Location = new System.Drawing.Point(152, 73);
+            this.txtTurnier.Location = new System.Drawing.Point(114, 59);
+            this.txtTurnier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTurnier.Name = "txtTurnier";
-            this.txtTurnier.Size = new System.Drawing.Size(200, 22);
+            this.txtTurnier.Size = new System.Drawing.Size(151, 20);
             this.txtTurnier.TabIndex = 13;
             // 
             // lblTurnier
             // 
             this.lblTurnier.AutoSize = true;
             this.lblTurnier.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTurnier.Location = new System.Drawing.Point(12, 66);
+            this.lblTurnier.Location = new System.Drawing.Point(9, 54);
+            this.lblTurnier.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTurnier.Name = "lblTurnier";
-            this.lblTurnier.Size = new System.Drawing.Size(105, 29);
+            this.lblTurnier.Size = new System.Drawing.Size(84, 24);
             this.lblTurnier.TabIndex = 12;
             this.lblTurnier.Text = "Turnier:";
             // 
             // txtDatum
             // 
-            this.txtDatum.Location = new System.Drawing.Point(152, 16);
+            this.txtDatum.Location = new System.Drawing.Point(114, 13);
+            this.txtDatum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDatum.Name = "txtDatum";
-            this.txtDatum.Size = new System.Drawing.Size(200, 22);
+            this.txtDatum.Size = new System.Drawing.Size(151, 20);
             this.txtDatum.TabIndex = 11;
             // 
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
             this.lblDatum.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatum.Location = new System.Drawing.Point(12, 9);
+            this.lblDatum.Location = new System.Drawing.Point(9, 7);
+            this.lblDatum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDatum.Name = "lblDatum";
-            this.lblDatum.Size = new System.Drawing.Size(94, 29);
+            this.lblDatum.Size = new System.Drawing.Size(75, 24);
             this.lblDatum.TabIndex = 10;
             this.lblDatum.Text = "Datum:";
             // 
             // EditVoranmeldungen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 246);
+            this.ClientSize = new System.Drawing.Size(278, 200);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtOrt);
@@ -123,7 +131,9 @@
             this.Controls.Add(this.lblTurnier);
             this.Controls.Add(this.txtDatum);
             this.Controls.Add(this.lblDatum);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EditVoranmeldungen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditVoranmeldungen";
             this.ResumeLayout(false);
             this.PerformLayout();

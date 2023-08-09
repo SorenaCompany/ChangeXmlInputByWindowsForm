@@ -19,6 +19,6 @@ D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.csprojResolveAssembly
 D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.EditForm.resources
 D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.EditSelectedRow.resources
 D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.EditVoranmeldungen.resources
-D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.Form1.resources
 D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.Properties.Resources.resources
 D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.csproj.GenerateResource.Cache
+D:\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.FrmMain.resources

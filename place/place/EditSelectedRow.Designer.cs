@@ -45,58 +45,65 @@
             // 
             this.lblPos.AutoSize = true;
             this.lblPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPos.Location = new System.Drawing.Point(30, 26);
+            this.lblPos.Location = new System.Drawing.Point(22, 21);
+            this.lblPos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPos.Name = "lblPos";
-            this.lblPos.Size = new System.Drawing.Size(72, 29);
+            this.lblPos.Size = new System.Drawing.Size(57, 24);
             this.lblPos.TabIndex = 0;
             this.lblPos.Text = "Pos: ";
             // 
             // txtPos
             // 
-            this.txtPos.Location = new System.Drawing.Point(170, 33);
+            this.txtPos.Location = new System.Drawing.Point(128, 27);
+            this.txtPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPos.Name = "txtPos";
-            this.txtPos.Size = new System.Drawing.Size(200, 22);
+            this.txtPos.Size = new System.Drawing.Size(151, 20);
             this.txtPos.TabIndex = 1;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(170, 90);
+            this.txtFirstName.Location = new System.Drawing.Point(128, 73);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(200, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(151, 20);
             this.txtFirstName.TabIndex = 3;
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(30, 83);
+            this.lblFirstName.Location = new System.Drawing.Point(22, 67);
+            this.lblFirstName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(141, 29);
+            this.lblFirstName.Size = new System.Drawing.Size(111, 24);
             this.lblFirstName.TabIndex = 2;
             this.lblFirstName.Text = "FirstName:";
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(170, 145);
+            this.txtLastName.Location = new System.Drawing.Point(128, 118);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(200, 22);
+            this.txtLastName.Size = new System.Drawing.Size(151, 20);
             this.txtLastName.TabIndex = 5;
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(30, 138);
+            this.lblLastName.Location = new System.Drawing.Point(22, 112);
+            this.lblLastName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(137, 29);
+            this.lblLastName.Size = new System.Drawing.Size(108, 24);
             this.lblLastName.TabIndex = 4;
             this.lblLastName.Text = "LastName:";
             // 
             // txtDisziplin
             // 
-            this.txtDisziplin.Location = new System.Drawing.Point(170, 200);
+            this.txtDisziplin.Location = new System.Drawing.Point(128, 162);
+            this.txtDisziplin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDisziplin.Name = "txtDisziplin";
-            this.txtDisziplin.Size = new System.Drawing.Size(200, 22);
+            this.txtDisziplin.Size = new System.Drawing.Size(151, 20);
             this.txtDisziplin.TabIndex = 7;
             this.txtDisziplin.TextChanged += new System.EventHandler(this.txtDisziplin_TextChanged);
             this.txtDisziplin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDisziplin_KeyPress);
@@ -105,17 +112,19 @@
             // 
             this.lblDisziplin.AutoSize = true;
             this.lblDisziplin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisziplin.Location = new System.Drawing.Point(30, 193);
+            this.lblDisziplin.Location = new System.Drawing.Point(22, 157);
+            this.lblDisziplin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDisziplin.Name = "lblDisziplin";
-            this.lblDisziplin.Size = new System.Drawing.Size(120, 29);
+            this.lblDisziplin.Size = new System.Drawing.Size(94, 24);
             this.lblDisziplin.TabIndex = 6;
             this.lblDisziplin.Text = "Disziplin:";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 313);
+            this.btnSave.Location = new System.Drawing.Point(9, 254);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 45);
+            this.btnSave.Size = new System.Drawing.Size(85, 37);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -123,9 +132,10 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(131, 313);
+            this.btnExit.Location = new System.Drawing.Point(98, 254);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(113, 45);
+            this.btnExit.Size = new System.Drawing.Size(85, 37);
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -136,16 +146,17 @@
             this.lblDisziplinChanged.AutoSize = true;
             this.lblDisziplinChanged.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDisziplinChanged.ForeColor = System.Drawing.Color.Red;
-            this.lblDisziplinChanged.Location = new System.Drawing.Point(12, 245);
+            this.lblDisziplinChanged.Location = new System.Drawing.Point(9, 199);
+            this.lblDisziplinChanged.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDisziplinChanged.Name = "lblDisziplinChanged";
-            this.lblDisziplinChanged.Size = new System.Drawing.Size(0, 20);
+            this.lblDisziplinChanged.Size = new System.Drawing.Size(0, 17);
             this.lblDisziplinChanged.TabIndex = 10;
             // 
             // EditSelectedRow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 370);
+            this.ClientSize = new System.Drawing.Size(289, 301);
             this.Controls.Add(this.lblDisziplinChanged);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
@@ -157,7 +168,9 @@
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.txtPos);
             this.Controls.Add(this.lblPos);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EditSelectedRow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditSelectedRow";
             this.Load += new System.EventHandler(this.EditSelectedRow_Load);
             this.ResumeLayout(false);

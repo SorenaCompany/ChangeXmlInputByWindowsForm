@@ -31,7 +31,7 @@ namespace place
             selectedRow.Cells["Datum"].Value = txtDatum.Text;
             selectedRow.Cells["Turnier"].Value = txtTurnier.Text;
             selectedRow.Cells["Ort"].Value = txtOrt.Text;
-            Form1 originalForm = (Form1)Application.OpenForms["Form1"];
+            FrmMain originalForm = (FrmMain)Application.OpenForms["FrmMain"];
             originalForm.UpdateDataGridViewRow(selectedRow);
             Close();
         }

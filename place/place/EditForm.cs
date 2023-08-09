@@ -59,6 +59,7 @@ namespace place
                 dataGridView.Name = $"dataGridView{j}";
                 dataGridView.SelectionChanged += DataGridView_SelectionChanged;
                 dataGridView.AllowUserToAddRows = false;
+                dataGridView.Dock = DockStyle.Fill;
                 dataGridView.ReadOnly = true;
                 dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 dataGridView.Size = new System.Drawing.Size(511, 240);
@@ -198,5 +199,11 @@ namespace place
         {
             dataGridView = (DataGridView) sender;
         }
+
+        private void EditForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
