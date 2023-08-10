@@ -104,7 +104,7 @@ namespace place
             {
                 string filePath = saveFileDialog.FileName;
                 ReturnedObject.Save(filePath);
-                MessageBox.Show("File had saved successfully");
+                MessageBox.Show("The file has been saved successfully.");
             }
         }
 
