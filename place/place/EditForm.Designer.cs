@@ -33,7 +33,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEditRow = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -61,9 +61,9 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.btnExit, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnEditRow, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnSave, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.btnEditRow, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.btnAdd, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -98,7 +98,7 @@
             // 
             // btnEditRow
             // 
-            this.btnEditRow.Location = new System.Drawing.Point(3, 42);
+            this.btnEditRow.Location = new System.Drawing.Point(3, 3);
             this.btnEditRow.Name = "btnEditRow";
             this.btnEditRow.Size = new System.Drawing.Size(118, 33);
             this.btnEditRow.TabIndex = 3;
@@ -106,15 +106,15 @@
             this.btnEditRow.UseVisualStyleBackColor = true;
             this.btnEditRow.Click += new System.EventHandler(this.btnEditRow_Click);
             // 
-            // btnAdd
+            // btnDelete
             // 
-            this.btnAdd.Location = new System.Drawing.Point(3, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(118, 33);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnDelete.Location = new System.Drawing.Point(3, 42);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(118, 33);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tabControl1
             // 
@@ -160,6 +160,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

@@ -178,7 +178,6 @@ namespace place
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
                 rowIndex4Change = selectedRow.Index;
                 new EditSelectedRow(selectedRow).ShowDialog();
-                // Access the values of the selected row
             }
         }
         // Create a public method to receive the modified data
@@ -209,9 +208,34 @@ namespace place
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not Implemented Yet...");
+            DialogResult result = MessageBox.Show("Are you sure to delete the player?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result==DialogResult.Yes)
+            {
+                DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
+                string teamID = selectedRow.Cells["TeamID"].Value.ToString();
+                string disziplinID = selectedRow.Cells["DisziplinID"].Value.ToString();
+
+                string xpathExpression =String.Format("//Team[@TeamID='{0}' and @DisziplinID='{1}']",teamID, disziplinID);
+                int rowIndex4Delete = selectedRow.Index;
+                if (ReturnedObject == null)
+                {
+                    ReturnedObject = xmlDoc;
+                }
+                XmlNode teamNode = ReturnedObject.SelectSingleNode(xpathExpression);
+                if (teamNode != null)
+                {
+                    // Remove the Team node from its parent
+                    teamNode.ParentNode.RemoveChild(teamNode);
+                    if (dataGridView.Rows.Count > 0 && rowIndex4Delete >= 0 && rowIndex4Delete < dataGridView.Rows.Count)
+                    {
+                        dataGridView.Rows.RemoveAt(rowIndex4Delete);
+                    }
+                    dataGridView.Refresh();
+                }
+            }
         }
     }
 }
