@@ -16,6 +16,7 @@ namespace place
         private XmlDocument ReturnedObject;
         XmlDocument xmlDoc = new XmlDocument();
         private DataGridView changeddataGridView = new DataGridView();
+        private bool displayPlatzTable;
 
         private int rowIndex4Change;
 
@@ -29,33 +30,75 @@ namespace place
 
         private void loadXml()
         {
-            #region Team Table
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Datum");
-            dt.Columns.Add("Turnier");
-            dt.Columns.Add("Ort");
-
-            // Get the "Voranmeldungen" element
-            XmlNodeList VoranmeldungenNodes = xmlDoc.SelectNodes("//Voranmeldungen");
-
-            foreach (XmlNode node in VoranmeldungenNodes)
+            XmlNodeList VoranmeldungenNode = xmlDoc.SelectNodes("//Voranmeldungen");
+            if (VoranmeldungenNode.Count>0)
             {
-                DataRow newRow = dt.NewRow();
-                // Access the attributes of each "Voranmeldungen" node as needed
-                newRow["Datum"] = node.Attributes["Turnierstart"].Value;
-                newRow["Turnier"] = node.Attributes["Name"].Value;
-                newRow["Ort"] = node.Attributes["Ort"].Value;
-                if (node.Attributes["Turnierstart"] != null)
-                    dt.Rows.Add(newRow);
+                #region Make Voranmeldungen Data Table
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Datum");
+                dt.Columns.Add("Turnier");
+                dt.Columns.Add("Ort");
+
+                // Get the "Voranmeldungen" element
+
+                foreach (XmlNode node in VoranmeldungenNode)
+                {
+                    DataRow newRow = dt.NewRow();
+                    // Access the attributes of each "Voranmeldungen" node as needed
+                    newRow["Datum"] = node.Attributes["Turnierstart"].Value;
+                    newRow["Turnier"] = node.Attributes["Name"].Value;
+                    newRow["Ort"] = node.Attributes["Ort"].Value;
+                    if (node.Attributes["Turnierstart"] != null)
+                        dt.Rows.Add(newRow);
+                }
+
+                dataGridView1.DataSource = dt;
+
+                btnEdit.Enabled = true;
+                btnShowDetails.Enabled = true;
+                btnSave.Enabled = true;
+                #endregion
+            }
+            else
+            {
+                XmlNodeList disziplinNode = xmlDoc.SelectNodes("//disziplin/meldung");
+
+                #region Make Disziplin Data Table
+
+                DataTable disziplinDT = new DataTable();
+                disziplinDT.Columns.Add("Platz");
+                disziplinDT.Columns.Add("Player");
+
+                // Get the "Voranmeldungen" element
+
+                foreach (XmlNode node in disziplinNode)
+                {
+                    DataRow newRow = disziplinDT.NewRow();
+                    // Access the attributes of each "Voranmeldungen" node as needed
+                    newRow["Platz"] = node.Attributes["platz"].Value;
+                    newRow["Player"] = node.Attributes["name"].Value;
+                    if (node.Attributes["platz"] != null)
+                        disziplinDT.Rows.Add(newRow);
+                }
+
+                dataGridView1.DataSource = disziplinDT;
+                btnEdit.Enabled = true;
+                btnSave.Enabled = true;
+                displayPlatzTable = true;
+
+                
+                #endregion
             }
 
-            dataGridView1.DataSource = dt;
-
-            // Set the AutoSizeMode property of each column to AllCells
-          
-            #endregion
         }
+
+        private void sortDataGridView()
+        {
+            // Sort the DataGridView by the "platz" column in ascending order
+            dataGridView1.Sort(dataGridView1.Columns["platz"], System.ComponentModel.ListSortDirection.Ascending);
+        }
+
         private void btnShowDetails_Click(object sender, EventArgs e)
         {
             EditForm editForm = new EditForm(xmlDoc);
@@ -124,10 +167,8 @@ namespace place
                 // Load the XML file using the selected file path
                 xmlDoc.Load(filePath);
                 loadXml();
+             
 
-                btnEdit.Enabled = true;
-                btnShowDetails.Enabled = true;
-                btnSave.Enabled = true;
                 // Process the XML file as needed
                 // ...
             }
@@ -135,28 +176,53 @@ namespace place
 
         private void btnEditRow_Click(object sender, EventArgs e)
         {
-
-            if (dataGridView1.SelectedRows.Count > 0)
+            // Get the selected row
+            DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+            rowIndex4Change = selectedRow.Index;
+            if (dataGridView1.SelectedRows.Count == 1)
             {
-                // Get the selected row
-                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                rowIndex4Change = selectedRow.Index;
-                new EditVoranmeldungen(selectedRow).ShowDialog();
-                // Access the values of the selected row
+                if (displayPlatzTable)
+                {
+                    new EditPlatz(selectedRow).ShowDialog();
+                    sortDataGridView();
+                }
+                else
+                {
+                    new EditVoranmeldungen(selectedRow).ShowDialog();
+                    // Access the values of the selected row
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select just one Row..");
             }
         }
         // Create a public method to receive the modified data
         public void UpdateDataGridViewRow(DataGridViewRow changedRow)
         {
-            // Update the data in the underlying data source
-            // Assuming you are using a DataTable
             DataTable dataTable = (DataTable)dataGridView1.DataSource;
             DataRowCollection rows = dataTable.Rows;
             DataRow row = rows[rowIndex4Change];
-            row["Datum"] = changedRow.Cells["Datum"].Value;
-            row["Turnier"] = changedRow.Cells["Turnier"].Value;
-            row["Ort"] = changedRow.Cells["Ort"].Value;
-
+            if (displayPlatzTable)
+            {
+                // Update the data in the underlying data source
+                // Assuming you are using a DataTable
+                row["Platz"] = changedRow.Cells["Platz"].Value;
+                row["player"] = changedRow.Cells["player"].Value;
+                for (int i = 0; i < rows.Count; i++)
+                {
+                  var x=  rows[i]["platz"];
+                }
+            }
+            else
+            {
+                // Update the data in the underlying data source
+                // Assuming you are using a DataTable
+                row["Datum"] = changedRow.Cells["Datum"].Value;
+                row["Turnier"] = changedRow.Cells["Turnier"].Value;
+                row["Ort"] = changedRow.Cells["Ort"].Value;
+            }
+            
             // Refresh the specific row in the DataGridView
             dataGridView1.Refresh();
         }

@@ -52,6 +52,12 @@
     <Compile Include="EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditPlatz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPlatz.Designer.cs">
+      <DependentUpon>EditPlatz.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditSelectedRow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EditForm.resx">
       <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPlatz.resx">
+      <DependentUpon>EditPlatz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditSelectedRow.resx">
       <DependentUpon>EditSelectedRow.cs</DependentUpon>
