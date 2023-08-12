@@ -24,7 +24,7 @@ namespace place
         {
             InitializeComponent();
             btnEdit.Enabled = false;
-            btnSave.Enabled = false;
+            btnExportXML.Enabled = false;
             btnShowDetails.Enabled = false;
         }
 
@@ -57,7 +57,9 @@ namespace place
 
                 btnEdit.Enabled = true;
                 btnShowDetails.Enabled = true;
-                btnSave.Enabled = true;
+                btnExportXML.Enabled = true;
+                displayPlatzTable = false;
+
                 #endregion
             }
             else
@@ -84,7 +86,8 @@ namespace place
 
                 dataGridView1.DataSource = disziplinDT;
                 btnEdit.Enabled = true;
-                btnSave.Enabled = true;
+                btnShowDetails.Enabled = false;
+                btnExportXML.Enabled = true;
                 displayPlatzTable = true;
 
                 
@@ -111,33 +114,22 @@ namespace place
             ReturnedObject = editForm.ReturnedObject;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnExportXML_Click(object sender, EventArgs e)
         {
             if (ReturnedObject==null)
             {
                 ReturnedObject = xmlDoc;
             }
-            string Turnierstart=string.Empty;
-            string Name= string.Empty;
-            string Ort=string.Empty;
-            DataTable dt = dataGridView1.DataSource as DataTable;
-            if (dt != null)
-            {
-                foreach (DataRow row in dt.Rows)
-                {
-                     Turnierstart = row["Datum"].ToString();
-                     Name = row["Turnier"].ToString();
-                     Ort = row["Ort"].ToString();
-                }
-            }
-            XmlNode voranmeldungenNode = ReturnedObject.SelectSingleNode("/root/Voranmeldungen");
 
-            if (voranmeldungenNode!=null)
+            if (!displayPlatzTable)
             {
-                voranmeldungenNode.Attributes["Turnierstart"].Value = Turnierstart;
-                voranmeldungenNode.Attributes["Name"].Value = Name;
-                voranmeldungenNode.Attributes["Ort"].Value = Ort;
+                exportVoranmeldungentXML();
             }
+            else
+            {
+                exportPlatztXML();
+            }
+
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "XML files (*.xml)|*.xml";
             saveFileDialog.Title = "Save XML File";
@@ -149,6 +141,62 @@ namespace place
                 ReturnedObject.Save(filePath);
                 MessageBox.Show("The file has been saved successfully.");
             }
+        }
+
+        private void exportVoranmeldungentXML()
+        {
+            #region Export Voranmeldungen XML
+
+            string Turnierstart = string.Empty;
+            string Name = string.Empty;
+            string Ort = string.Empty;
+            DataTable dt = dataGridView1.DataSource as DataTable;
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    Turnierstart = row["Datum"].ToString();
+                    Name = row["Turnier"].ToString();
+                    Ort = row["Ort"].ToString();
+                }
+            }
+            XmlNode voranmeldungenNode = ReturnedObject.SelectSingleNode("/root/Voranmeldungen");
+
+            if (voranmeldungenNode != null)
+            {
+                voranmeldungenNode.Attributes["Turnierstart"].Value = Turnierstart;
+                voranmeldungenNode.Attributes["Name"].Value = Name;
+                voranmeldungenNode.Attributes["Ort"].Value = Ort;
+            }
+
+            #endregion
+        }
+
+        private void exportPlatztXML()
+        {
+            List<string> platz = new List<string>();
+            List<string> player = new List<string>();
+
+            DataTable dt = dataGridView1.DataSource as DataTable;
+            if (dt != null)
+            {
+                int index = 0;
+                for (index = 0; index < dt.Rows.Count; index++)
+                {
+                    DataRow row = dt.Rows[index];
+                    platz.Add(row["platz"].ToString());
+                    player.Add(row["Player"].ToString());
+
+                    XmlNode meldungNode = xmlDoc.SelectSingleNode(
+                        $"//meldung[@name='{player[index]}']");
+                    if (meldungNode != null)
+                    {
+                        meldungNode.Attributes["platz"].Value = platz[index];
+                        //  teamNode.ParentNode.ParentNode.Attributes["BezeichnungLang"].Value=disziplin;
+                    }
+                }
+            }
+            
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -208,11 +256,11 @@ namespace place
                 // Update the data in the underlying data source
                 // Assuming you are using a DataTable
                 row["Platz"] = changedRow.Cells["Platz"].Value;
-                row["player"] = changedRow.Cells["player"].Value;
-                for (int i = 0; i < rows.Count; i++)
-                {
-                  var x=  rows[i]["platz"];
-                }
+               // row["player"] = changedRow.Cells["player"].Value;
+                //for (int i = 0; i < rows.Count; i++)
+                //{
+                //  var x=  rows[i]["platz"];
+                //}
             }
             else
             {

@@ -35,7 +35,7 @@ namespace place
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnExportXML = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnShowDetails = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -82,13 +82,14 @@ namespace place
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(415, 266);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.SelectionChanged += DataGridView_SelectionChanged;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.btnBrowse, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnSave, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnExportXML, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnEdit, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.btnShowDetails, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -112,15 +113,15 @@ namespace place
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
-            // btnSave
+            // btnExportXML
             // 
-            this.btnSave.Location = new System.Drawing.Point(3, 119);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(129, 33);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Export XML";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnExportXML.Location = new System.Drawing.Point(3, 119);
+            this.btnExportXML.Name = "btnExportXML";
+            this.btnExportXML.Size = new System.Drawing.Size(129, 33);
+            this.btnExportXML.TabIndex = 4;
+            this.btnExportXML.Text = "Export XML";
+            this.btnExportXML.UseVisualStyleBackColor = true;
+            this.btnExportXML.Click += new System.EventHandler(this.btnExportXML_Click);
             // 
             // btnEdit
             // 
@@ -166,7 +167,7 @@ namespace place
         private DataGridView dataGridView1;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnBrowse;
-        private Button btnSave;
+        private Button btnExportXML;
         private Button btnEdit;
         private Button btnShowDetails;
     }
