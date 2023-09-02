@@ -34,11 +34,11 @@
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
-            this.txtDisziplin = new System.Windows.Forms.TextBox();
             this.lblDisziplin = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblDisziplinChanged = new System.Windows.Forms.Label();
+            this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // lblPos
@@ -55,7 +55,7 @@
             // txtPos
             // 
             this.txtPos.Location = new System.Drawing.Point(128, 27);
-            this.txtPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPos.Margin = new System.Windows.Forms.Padding(2);
             this.txtPos.Name = "txtPos";
             this.txtPos.Size = new System.Drawing.Size(151, 20);
             this.txtPos.TabIndex = 1;
@@ -63,7 +63,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(128, 73);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(151, 20);
             this.txtFirstName.TabIndex = 3;
@@ -82,7 +82,7 @@
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(128, 118);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(151, 20);
             this.txtLastName.TabIndex = 5;
@@ -98,16 +98,6 @@
             this.lblLastName.TabIndex = 4;
             this.lblLastName.Text = "LastName:";
             // 
-            // txtDisziplin
-            // 
-            this.txtDisziplin.Location = new System.Drawing.Point(128, 162);
-            this.txtDisziplin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtDisziplin.Name = "txtDisziplin";
-            this.txtDisziplin.Size = new System.Drawing.Size(151, 20);
-            this.txtDisziplin.TabIndex = 7;
-            this.txtDisziplin.TextChanged += new System.EventHandler(this.txtDisziplin_TextChanged);
-            this.txtDisziplin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDisziplin_KeyPress);
-            // 
             // lblDisziplin
             // 
             this.lblDisziplin.AutoSize = true;
@@ -121,8 +111,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(9, 254);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(-6, 378);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 37);
             this.btnSave.TabIndex = 8;
@@ -132,8 +122,8 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(98, 254);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExit.Location = new System.Drawing.Point(104, 378);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(85, 37);
             this.btnExit.TabIndex = 9;
@@ -152,15 +142,23 @@
             this.lblDisziplinChanged.Size = new System.Drawing.Size(0, 17);
             this.lblDisziplinChanged.TabIndex = 10;
             // 
+            // checkedListBox
+            // 
+            this.checkedListBox.FormattingEnabled = true;
+            this.checkedListBox.Location = new System.Drawing.Point(128, 157);
+            this.checkedListBox.Name = "checkedListBox";
+            this.checkedListBox.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox.TabIndex = 11;
+            // 
             // EditSelectedRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 301);
+            this.ClientSize = new System.Drawing.Size(454, 471);
+            this.Controls.Add(this.checkedListBox);
             this.Controls.Add(this.lblDisziplinChanged);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtDisziplin);
             this.Controls.Add(this.lblDisziplin);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.lblLastName);
@@ -168,7 +166,7 @@
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.txtPos);
             this.Controls.Add(this.lblPos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EditSelectedRow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditSelectedRow";
@@ -186,10 +184,10 @@
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label lblLastName;
-        private System.Windows.Forms.TextBox txtDisziplin;
         private System.Windows.Forms.Label lblDisziplin;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblDisziplinChanged;
+        private System.Windows.Forms.CheckedListBox checkedListBox;
     }
 }

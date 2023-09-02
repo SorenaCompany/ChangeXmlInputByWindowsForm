@@ -82,7 +82,6 @@ namespace place
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(415, 266);
             this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.SelectionChanged += DataGridView_SelectionChanged;
             // 
             // tableLayoutPanel2
             // 
@@ -151,7 +150,7 @@ namespace place
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmMain";
+            this.Text = "ModifyXMLProject";
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

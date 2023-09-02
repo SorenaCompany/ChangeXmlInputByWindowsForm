@@ -18,14 +18,17 @@ namespace place
         private List<XmlNodeList> DisziplinsLists;
         private DataGridView dataGridView = new DataGridView();
         private int rowIndex4Change;
+        private string filePath;
+        private TabPage previousTabPage; // Store the previously selected tab page
 
-        public EditForm(XmlDocument xmlDoc)
+        public EditForm(XmlDocument xmlDoc,string filePath)
         {
             InitializeComponent();
             this.xmlDoc = xmlDoc;
             XmlNodeList Disziplins = xmlDoc.SelectNodes("//Disziplin[Teams/Team[count(.) >=1]]");
             int disziplinsCount = xmlDoc.SelectNodes("//Disziplin").Count;
             int count = Disziplins.Count;
+            this.filePath = filePath;
             DisziplinsLists = disLists();
             makeTabPage(DisziplinsLists);
         }
@@ -47,8 +50,36 @@ namespace place
             return lists;
         }
 
+      
+        private void RemoveTabPagesWithDataGridView()
+        {
+            // Create a list to store the TabPages to be removed
+            List<TabPage> pagesToRemove = new List<TabPage>();
+
+            // Iterate through each TabPage in the TabControl
+            foreach (TabPage tabPage in tabControl1.TabPages)
+            {
+                // Check if the TabPage contains a DataGridView control
+                foreach (Control control in tabPage.Controls)
+                {
+                    if (control is DataGridView)
+                    {
+                        // Add the TabPage to the list of pages to be removed
+                        pagesToRemove.Add(tabPage);
+                        break; // No need to continue checking other controls in the TabPage
+                    }
+                }
+            }
+
+            // Remove the TabPages from the TabControl
+            foreach (TabPage tabPage in pagesToRemove)
+            {
+                tabControl1.TabPages.Remove(tabPage);
+            }
+        }
         private void makeTabPage(List<XmlNodeList> DisziplinsLists)
         {
+            RemoveTabPagesWithDataGridView();
             for (int j = 0; j < DisziplinsLists.Count; j++)
             {
                 TabPage tabPage = new TabPage();
@@ -169,17 +200,22 @@ namespace place
             Close();
         }
 
-        private void btnEditRow_Click(object sender, EventArgs e)
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
-            if (dataGridView.SelectedRows.Count > 0)
+            if (previousTabPage != null)
             {
-                // Get the selected row
-                DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
-                rowIndex4Change = selectedRow.Index;
-                new EditSelectedRow(selectedRow).ShowDialog();
+                // Clear the selection of the DataGridView on the previous tab page
+                DataGridView dgv = previousTabPage.Controls.OfType<DataGridView>().FirstOrDefault();
+                if (dgv != null)
+                {
+                    dgv.ClearSelection();
+                }
             }
+
+            // Store the currently selected tab page as the previous tab page
+            previousTabPage = tabControl1.SelectedTab;
         }
+       
         // Create a public method to receive the modified data
         public void UpdateDataGridViewRow(DataGridViewRow changedRow)
         {
@@ -196,6 +232,12 @@ namespace place
             }
             // Refresh the specific row in the DataGridView
             dataGridView.Refresh();
+        }
+
+        public void ReloadDataGridViewAfterAddSpieler(XmlDocument xmlDoc)
+        {
+            this.xmlDoc = xmlDoc;
+            makeTabPage(disLists());
         }
 
         private void DataGridView_SelectionChanged(object sender, EventArgs e)
@@ -236,6 +278,31 @@ namespace place
                     dataGridView.Refresh();
                 }
             }
+        }
+        private void btnEditRow_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedRows.Count > 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
+                rowIndex4Change = selectedRow.Index;
+                new EditSelectedRow(selectedRow,xmlDoc,fillCheckedListBox()).ShowDialog();
+            }
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            new EditSelectedRow(xmlDoc, true, fillCheckedListBox()).ShowDialog();
+        }
+        private List<string> fillCheckedListBox()
+        {
+            XmlNodeList bezeichnungNodes = xmlDoc.SelectNodes("//Disziplin");
+            List<string> checkedListBoxItems = new List<string>();
+            foreach (XmlNode node in bezeichnungNodes)
+            {
+                string value = node.Attributes["BezeichnungLang"].Value;
+                checkedListBoxItems.Add(value);
+            }
+            return checkedListBoxItems;
         }
     }
 }

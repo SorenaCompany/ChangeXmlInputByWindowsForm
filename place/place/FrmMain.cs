@@ -17,9 +17,8 @@ namespace place
         XmlDocument xmlDoc = new XmlDocument();
         private DataGridView changeddataGridView = new DataGridView();
         private bool displayPlatzTable;
-
         private int rowIndex4Change;
-
+        private string filePath;
         public FrmMain()
         {
             InitializeComponent();
@@ -104,7 +103,7 @@ namespace place
 
         private void btnShowDetails_Click(object sender, EventArgs e)
         {
-            EditForm editForm = new EditForm(xmlDoc);
+            EditForm editForm = new EditForm(xmlDoc,filePath);
             editForm.ShowDialog();
             editForm.FormClosed += EditForm_FormClosed;
         }
@@ -210,7 +209,7 @@ namespace place
             // Show the file dialog and check if the user clicked the OK button
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string filePath = openFileDialog.FileName;
+                 filePath = openFileDialog.FileName;
 
                 // Load the XML file using the selected file path
                 xmlDoc.Load(filePath);
