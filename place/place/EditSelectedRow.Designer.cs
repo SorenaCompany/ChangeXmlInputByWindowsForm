@@ -170,7 +170,6 @@
             this.Name = "EditSelectedRow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditSelectedRow";
-            this.Load += new System.EventHandler(this.EditSelectedRow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

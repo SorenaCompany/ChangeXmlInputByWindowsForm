@@ -21,7 +21,7 @@ namespace place
         private string filePath;
         private TabPage previousTabPage; // Store the previously selected tab page
 
-        public EditForm(XmlDocument xmlDoc,string filePath)
+        public EditForm(XmlDocument xmlDoc, string filePath)
         {
             InitializeComponent();
             this.xmlDoc = xmlDoc;
@@ -50,7 +50,7 @@ namespace place
             return lists;
         }
 
-      
+
         private void RemoveTabPagesWithDataGridView()
         {
             // Create a list to store the TabPages to be removed
@@ -77,6 +77,7 @@ namespace place
                 tabControl1.TabPages.Remove(tabPage);
             }
         }
+
         private void makeTabPage(List<XmlNodeList> DisziplinsLists)
         {
             RemoveTabPagesWithDataGridView();
@@ -120,7 +121,8 @@ namespace place
                 // Fill the DataTable with data for the current tab page
                 foreach (XmlNode teamNode in DisziplinsLists[j])
                 {
-                    tabPage.Text = String.Format("Voranmeldungen {0}", teamNode.ParentNode.ParentNode.Attributes["BezeichnungLang"].Value);
+                    tabPage.Text = String.Format("Voranmeldungen {0}",
+                        teamNode.ParentNode.ParentNode.Attributes["BezeichnungLang"].Value);
 
                     DataRow newRow = dt.NewRow();
                     newRow["Pos"] = teamNode.Attributes["TeamNr"].Value;
@@ -200,27 +202,13 @@ namespace place
             Close();
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (previousTabPage != null)
-            {
-                // Clear the selection of the DataGridView on the previous tab page
-                DataGridView dgv = previousTabPage.Controls.OfType<DataGridView>().FirstOrDefault();
-                if (dgv != null)
-                {
-                    dgv.ClearSelection();
-                }
-            }
 
-            // Store the currently selected tab page as the previous tab page
-            previousTabPage = tabControl1.SelectedTab;
-        }
-       
         // Create a public method to receive the modified data
-        public void UpdateDataGridViewRow(DataGridViewRow changedRow)
+        public void UpdateDataGridViewRow(DataGridViewRow changedRow,XmlDocument xmlDoc)
         {
             // Update the data in the underlying data source
             // Assuming you are using a DataTable
+            this.xmlDoc = xmlDoc;
             DataTable dataTable = (DataTable) dataGridView.DataSource;
             DataRowCollection rows = dataTable.Rows;
             DataRow row = rows[rowIndex4Change];
@@ -230,14 +218,17 @@ namespace place
             {
                 dataRow["Disziplin"] = changedRow.Cells["Disziplin"].Value;
             }
+
             // Refresh the specific row in the DataGridView
             dataGridView.Refresh();
+            this.Close();
         }
 
         public void ReloadDataGridViewAfterAddSpieler(XmlDocument xmlDoc)
         {
             this.xmlDoc = xmlDoc;
             makeTabPage(disLists());
+            this.Close();
         }
 
         private void DataGridView_SelectionChanged(object sender, EventArgs e)
@@ -252,33 +243,39 @@ namespace place
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure to delete the player?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure to delete the player?", "Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result==DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
                 string teamID = selectedRow.Cells["TeamID"].Value.ToString();
                 string disziplinID = selectedRow.Cells["DisziplinID"].Value.ToString();
 
-                string xpathExpression =String.Format("//Team[@TeamID='{0}' and @DisziplinID='{1}']",teamID, disziplinID);
+                string xpathExpression =
+                    String.Format("//Team[@TeamID='{0}' and @DisziplinID='{1}']", teamID, disziplinID);
                 int rowIndex4Delete = selectedRow.Index;
                 if (ReturnedObject == null)
                 {
                     ReturnedObject = xmlDoc;
                 }
+
                 XmlNode teamNode = ReturnedObject.SelectSingleNode(xpathExpression);
                 if (teamNode != null)
                 {
                     // Remove the Team node from its parent
                     teamNode.ParentNode.RemoveChild(teamNode);
-                    if (dataGridView.Rows.Count > 0 && rowIndex4Delete >= 0 && rowIndex4Delete < dataGridView.Rows.Count)
+                    if (dataGridView.Rows.Count > 0 && rowIndex4Delete >= 0 &&
+                        rowIndex4Delete < dataGridView.Rows.Count)
                     {
                         dataGridView.Rows.RemoveAt(rowIndex4Delete);
                     }
+
                     dataGridView.Refresh();
                 }
             }
         }
+
         private void btnEditRow_Click(object sender, EventArgs e)
         {
             if (dataGridView.SelectedRows.Count > 0)
@@ -286,13 +283,15 @@ namespace place
                 // Get the selected row
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
                 rowIndex4Change = selectedRow.Index;
-                new EditSelectedRow(selectedRow,xmlDoc,fillCheckedListBox()).ShowDialog();
+                new EditSelectedRow(selectedRow, xmlDoc, fillCheckedListBox()).ShowDialog();
             }
         }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             new EditSelectedRow(xmlDoc, true, fillCheckedListBox()).ShowDialog();
         }
+
         private List<string> fillCheckedListBox()
         {
             XmlNodeList bezeichnungNodes = xmlDoc.SelectNodes("//Disziplin");
@@ -302,7 +301,9 @@ namespace place
                 string value = node.Attributes["BezeichnungLang"].Value;
                 checkedListBoxItems.Add(value);
             }
+
             return checkedListBoxItems;
         }
     }
+
 }
