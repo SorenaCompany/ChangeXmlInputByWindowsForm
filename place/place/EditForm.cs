@@ -221,14 +221,17 @@ namespace place
 
             // Refresh the specific row in the DataGridView
             dataGridView.Refresh();
-            this.Close();
+            //this.Close();
         }
 
         public void ReloadDataGridViewAfterAddSpieler(XmlDocument xmlDoc)
         {
+           FrmMain FrmMain = (FrmMain)Application.OpenForms["FrmMain"];
+
             this.xmlDoc = xmlDoc;
             makeTabPage(disLists());
             this.Close();
+            FrmMain.trigger_btnShowDetails_Click_Again();
         }
 
         private void DataGridView_SelectionChanged(object sender, EventArgs e)
@@ -238,7 +241,6 @@ namespace place
 
         private void EditForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -283,13 +285,13 @@ namespace place
                 // Get the selected row
                 DataGridViewRow selectedRow = dataGridView.SelectedRows[0];
                 rowIndex4Change = selectedRow.Index;
-                new EditSelectedRow(selectedRow, xmlDoc, fillCheckedListBox()).ShowDialog();
+                new AddEditSelectedRow(selectedRow, xmlDoc, fillCheckedListBox()).ShowDialog();
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            new EditSelectedRow(xmlDoc, true, fillCheckedListBox()).ShowDialog();
+            new AddEditSelectedRow(xmlDoc, true, fillCheckedListBox()).ShowDialog();
         }
 
         private List<string> fillCheckedListBox()
@@ -303,6 +305,12 @@ namespace place
             }
 
             return checkedListBoxItems;
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             dataGridView = tabControl1.SelectedTab?.Controls.OfType<DataGridView>().FirstOrDefault();
+
         }
     }
 

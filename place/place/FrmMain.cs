@@ -107,6 +107,12 @@ namespace place
             editForm.ShowDialog();
             editForm.FormClosed += EditForm_FormClosed;
         }
+
+        public void trigger_btnShowDetails_Click_Again()
+        {
+            btnShowDetails_Click(null, null);
+        }
+
         private void EditForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             EditForm editForm = (EditForm)sender;
