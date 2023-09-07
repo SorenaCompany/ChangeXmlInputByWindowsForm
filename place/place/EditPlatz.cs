@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace place
 {
     public partial class EditPlatz : Form
     {
         public DataGridViewRow selectedRow;
-        public EditPlatz(DataGridViewRow selectedRow)
+        private XmlDocument ReturnObject;
+
+        public EditPlatz(DataGridViewRow selectedRow) //invoke from Edit Button
         {
             InitializeComponent();
             this.selectedRow = selectedRow;
@@ -35,7 +38,7 @@ namespace place
         {
             selectedRow.Cells["Platz"].Value = txtPlatz.Text;
             selectedRow.Cells["player"].Value = txtPlayer.Text;
-            FrmMain originalForm = (FrmMain)Application.OpenForms["FrmMain"];
+            FrmMain originalForm = (FrmMain) Application.OpenForms["FrmMain"];
             originalForm.UpdateDataGridViewRow(selectedRow);
             Close();
         }

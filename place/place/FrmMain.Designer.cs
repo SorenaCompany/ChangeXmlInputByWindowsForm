@@ -34,10 +34,12 @@ namespace place
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDeletePlatz = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnExportXML = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnShowDetails = new System.Windows.Forms.Button();
+            this.btnAddPlatz = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -87,20 +89,35 @@ namespace place
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.btnDeletePlatz, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.btnBrowse, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnExportXML, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.btnEdit, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.btnShowDetails, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.btnAddPlatz, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(144, 266);
             this.tableLayoutPanel2.TabIndex = 3;
+            // 
+            // btnDeletePlatz
+            // 
+            this.btnDeletePlatz.Location = new System.Drawing.Point(3, 197);
+            this.btnDeletePlatz.Name = "btnDeletePlatz";
+            this.btnDeletePlatz.Size = new System.Drawing.Size(129, 33);
+            this.btnDeletePlatz.TabIndex = 8;
+            this.btnDeletePlatz.Text = "DeletePlatz";
+            this.btnDeletePlatz.UseVisualStyleBackColor = true;
+            this.btnDeletePlatz.Visible = false;
+            this.btnDeletePlatz.Click += new System.EventHandler(this.btnDeletePlatz_Click);
             // 
             // btnBrowse
             // 
@@ -142,6 +159,17 @@ namespace place
             this.btnShowDetails.UseVisualStyleBackColor = true;
             this.btnShowDetails.Click += new System.EventHandler(this.btnShowDetails_Click);
             // 
+            // btnAddPlatz
+            // 
+            this.btnAddPlatz.Location = new System.Drawing.Point(3, 158);
+            this.btnAddPlatz.Name = "btnAddPlatz";
+            this.btnAddPlatz.Size = new System.Drawing.Size(129, 33);
+            this.btnAddPlatz.TabIndex = 7;
+            this.btnAddPlatz.Text = "AddPlatz";
+            this.btnAddPlatz.UseVisualStyleBackColor = true;
+            this.btnAddPlatz.Visible = false;
+            this.btnAddPlatz.Click += new System.EventHandler(this.btnAddPlatz_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,6 +197,8 @@ namespace place
         private Button btnExportXML;
         private Button btnEdit;
         private Button btnShowDetails;
+        private Button btnAddPlatz;
+        private Button btnDeletePlatz;
     }
 }
 

@@ -196,13 +196,10 @@ namespace place
             ReturnedObject = xmlDoc;
             Close();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-
         // Create a public method to receive the modified data
         public void UpdateDataGridViewRow(DataGridViewRow changedRow,XmlDocument xmlDoc)
         {

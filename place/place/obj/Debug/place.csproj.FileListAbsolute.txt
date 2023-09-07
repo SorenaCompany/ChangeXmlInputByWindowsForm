@@ -47,3 +47,4 @@ C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\plac
 C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.csproj.GenerateResource.Cache
 C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.EditPlatz.resources
 C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.AddEditSelectedRow.resources
+C:\Users\Mohammad\Desktop\ChangeXmlInputByWindowsForm\place\place\obj\Debug\place.AddPlatz.resources

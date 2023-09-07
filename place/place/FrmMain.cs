@@ -32,6 +32,8 @@ namespace place
             XmlNodeList VoranmeldungenNode = xmlDoc.SelectNodes("//Voranmeldungen");
             if (VoranmeldungenNode.Count>0)
             {
+                btnAddPlatz.Visible = false;
+                btnDeletePlatz.Visible = false;
                 #region Make Voranmeldungen Data Table
 
                 DataTable dt = new DataTable();
@@ -64,34 +66,40 @@ namespace place
             else
             {
                 XmlNodeList disziplinNode = xmlDoc.SelectNodes("//disziplin/meldung");
-
+                btnAddPlatz.Visible = true;
+                btnDeletePlatz.Visible = true;
                 #region Make Disziplin Data Table
 
-                DataTable disziplinDT = new DataTable();
-                disziplinDT.Columns.Add("Platz");
-                disziplinDT.Columns.Add("Player");
+                makePlatzDataGridView(disziplinNode);
 
-                // Get the "Voranmeldungen" element
-
-                foreach (XmlNode node in disziplinNode)
-                {
-                    DataRow newRow = disziplinDT.NewRow();
-                    // Access the attributes of each "Voranmeldungen" node as needed
-                    newRow["Platz"] = node.Attributes["platz"].Value;
-                    newRow["Player"] = node.Attributes["name"].Value;
-                    if (node.Attributes["platz"] != null)
-                        disziplinDT.Rows.Add(newRow);
-                }
-
-                dataGridView1.DataSource = disziplinDT;
-                btnEdit.Enabled = true;
-                btnShowDetails.Enabled = false;
-                btnExportXML.Enabled = true;
-                displayPlatzTable = true;
-
-                
                 #endregion
             }
+        }
+
+        public void makePlatzDataGridView(XmlNodeList disziplinNode)
+        {
+            DataTable disziplinDT = new DataTable();
+            disziplinDT.Columns.Add("Platz");
+            disziplinDT.Columns.Add("Player");
+
+            // Get the "Voranmeldungen" element
+
+            foreach (XmlNode node in disziplinNode)
+            {
+                DataRow newRow = disziplinDT.NewRow();
+                // Access the attributes of each "Voranmeldungen" node as needed
+                newRow["Platz"] = node.Attributes["platz"].Value;
+                newRow["Player"] = node.Attributes["name"].Value;
+                if (node.Attributes["platz"] != null)
+                    disziplinDT.Rows.Add(newRow);
+            }
+
+            dataGridView1.DataSource = disziplinDT;
+            btnEdit.Enabled = true;
+            btnShowDetails.Enabled = false;
+            btnExportXML.Enabled = true;
+            displayPlatzTable = true;
+
 
         }
 
@@ -285,6 +293,52 @@ namespace place
             changeddataGridView = (DataGridView)sender;
         }
 
-        
+        private void btnAddPlatz_Click(object sender, EventArgs e)
+        {
+            if (ReturnedObject==null)
+            {
+                ReturnedObject = xmlDoc;
+            }
+            new AddPlatz(ReturnedObject).ShowDialog();
+        }
+
+        private void btnDeletePlatz_Click(object sender, EventArgs e)
+        {
+            if (ReturnedObject==null)
+            {
+                ReturnedObject = xmlDoc;
+            }
+
+            DialogResult result = MessageBox.Show("Are you sure to delete the player?", "Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                string Platz = selectedRow.Cells["Platz"].Value.ToString();
+
+                string xpathExpression = String.Format("//meldung[@platz='{0}']", Platz);
+                int rowIndex4Delete = selectedRow.Index;
+                if (ReturnedObject == null)
+                {
+                    ReturnedObject = xmlDoc;
+                }
+
+                XmlNode meldungNode = ReturnedObject.SelectSingleNode(xpathExpression);
+                if (meldungNode != null)
+                {
+                    // Remove the meldungNode
+                    meldungNode.ParentNode.RemoveChild(meldungNode);
+                    if (dataGridView1.Rows.Count > 0 && rowIndex4Delete >= 0 &&
+                        rowIndex4Delete < dataGridView1.Rows.Count)
+                    {
+                        dataGridView1.Rows.RemoveAt(rowIndex4Delete);
+                    }
+
+                    dataGridView1.Refresh();
+                }
+            }
+
+        }
     }
 }
